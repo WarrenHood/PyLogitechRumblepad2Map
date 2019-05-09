@@ -345,7 +345,8 @@ key_states = {
 	"ctrl":0,
 	"options":0,
 	"share":0,
-	"touchpad":0
+	"touchpad":0,
+	"F3":0
 }
 
 
@@ -462,6 +463,10 @@ def update_ds4():
 						if not key_states["touchpad"]:
 							key_states["touchpad"] = 1
 							PressKey(0x10)
+					if button == "l1":
+						if not key_states["F3"]:
+							key_states["F3"] = 1
+							PressKey(0x3D)
 					#print("Button pressed:",button)
 					break
 			#for button in ds4_codes.getKeys():
@@ -501,6 +506,10 @@ def update_ds4():
 						if key_states["touchpad"]:
 							key_states["touchpad"] = 0
 							ReleaseKey(0x10)
+					if button == "l1":
+						if key_states["F3"]:
+							key_states["F3"] = 0
+							ReleaseKey(0x3D)
 					#print("Button released:",button)
 					break
 			##print(event.dict, event.joy, event.button, 'released')
